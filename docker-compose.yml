@@ -6,7 +6,7 @@ services:
       subnet1:
         ipv4_address: 172.16.1.2
       subnet2:
-        ipv4_address: 172.16.2.2
+        ipv4_address: 172.16.2.3
     ports:
       - "21:21"
       - "8888:80"
@@ -21,7 +21,9 @@ services:
     image: tleemcjr/metasploitable2
     networks:
       subnet2:
-        ipv4_address: 172.16.2.3
+        ipv4_address: 172.16.2.2
+      subnet3:
+        ipv4_address: 172.16.3.3
     container_name: metasploitable2
     command: sh -c "
       /bin/services.sh &&
