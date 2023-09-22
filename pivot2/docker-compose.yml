@@ -2,37 +2,29 @@ version: '3'
 services:
   metasploitable1:
     image: tleemcjr/metasploitable2
+    volumes:
+      - ./files:/start
     networks:
       subnet1:
-        ipv4_address: 172.16.1.2
+        ipv4_address: 172.16.10.2
       subnet2:
-        ipv4_address: 172.16.2.2
+        ipv4_address: 172.16.20.3
     ports:
-      - "21:21"
-      - "6667:6667"
+      - "8888:80"
     container_name: metasploitable1
     command: sh -c "
-      /bin/services.sh &&
+      /start/ms1.sh &&
       tail -f /dev/null
       "
 
   metasploitable2:
     image: tleemcjr/metasploitable2
+    volumes:
+      - ./files:/start
     networks:
       subnet2:
-        ipv4_address: 172.16.2.3
+        ipv4_address: 172.16.20.2
     container_name: metasploitable2
-    command: sh -c "
-      /bin/services.sh &&
-      tail -f /dev/null
-      "
-
-  metasploitable3:
-    image: tleemcjr/metasploitable2
-    networks:
-      subnet3:
-        ipv4_address: 172.16.3.2
-    container_name: metasploitable3
     command: sh -c "
       /bin/services.sh &&
       tail -f /dev/null
@@ -44,18 +36,12 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.16.1.0/24
+        - subnet: 172.16.10.0/24
 
   subnet2:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 172.16.2.0/24
+        - subnet: 172.16.20.0/24
 
-  subnet3:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.16.3.0/24
