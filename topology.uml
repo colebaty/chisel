@@ -1,0 +1,64 @@
+@startuml
+
+' URL points to root of osa2 sprite folder
+' e.g. clone from github and host locally
+' gh - https://github.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons.git
+' gogs mirror - http://gogs.cole.saas/cole/osa2-icons/raw/master/
+!define osaPuml http://172.16.0.16
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+!include osaPuml/Hardware/all.puml
+!include osaPuml/Misc/all.puml
+!include osaPuml/Server/all.puml
+!include osaPuml/Site/all.puml
+
+title chisel lab topology
+
+nwdiag {
+  network lan {
+    address = "10.10.10.0/24"
+    attacker [address = "10.10.10.100", description = "<$osa_user_black_hat>\n attacker"]
+    pwn-me [address = "10.10.10.10", description = "<$osa_server>\n pwn-me"]
+  }
+  
+
+  network docker0{
+    address = "172.17.0.0/16"
+    pwn-me [address = "172.17.0.1"];
+    br0 [address = "p2p"];
+    br1 [address = "p2p"];
+    br2 [address = "p2p"];
+  }
+
+  network br0 {
+   address = "172.16.1.0/24"
+   br0 [address = "172.16.1.1"];
+   ms1 [address = "172.16.1.2", description = "<$osa_image_generic>\n ms1"]
+  }
+
+  network br1 {
+   address = "172.16.2.0/24"
+   br1 [address = "172.16.2.1"];
+   ms2 [address = "172.16.2.2", description = "<$osa_image_generic>\n ms2"];
+   ms1 [address = "172.16.2.3"]
+  }
+
+  network br2 {
+   address = "172.16.3.0/24"
+   br2 [address = "172.16.3.1"];
+   ms3 [address = "172.16.3.2", description = "<$osa_image_generic>\n ms3"]
+   ms2 [address = "172.16.3.3"]
+  }
+
+
+  
+  group target {
+    description = "target"
+    color = "FireBrick";
+    ms3;
+  }
+
+}
+
+footer generated using PlantUML
+@enduml
