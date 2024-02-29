@@ -3,7 +3,7 @@
 ' URL points to root of osa2 sprite folder
 ' e.g. clone from github and host locally
 ' gh - https://github.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons.git
-' gogs mirror - http://gogs.cole.saas/cole/osa2-icons/raw/master/
+' gogs mirror - git@cole.saas:cole/osa2-icons.git
 !define osaPuml http://172.16.0.16
 !include osaPuml/Common.puml
 !include osaPuml/User/all.puml
