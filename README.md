@@ -1,5 +1,6 @@
 # Chisel pivoting lab
 
+## Purpose
 
 This is a lab I created during my eCPPT exam preparation to practice 
 pivoting techniques with [chisel](https://github.com/jpillora/chisel), 
@@ -14,6 +15,8 @@ third Metasploitable image, as shown in the topoglogy below, which was made
 with [PlantUML](https://plantuml.com).
 
 ![chisel lab topology](topology.png)
+
+## Recommended setup
 
 The recommended setup is to host the lab on a VM running Docker (`pwn-me` in
 the topology) which is on the same subnet as the attacker machine.  This way,
