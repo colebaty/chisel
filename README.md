@@ -10,7 +10,8 @@ helpful to have a number of tools in your pocket.
 The lab uses Docker to create three instances of the
 [tleemcjr/metasploitable2](https://hub.docker.com/r/tleemcjr/metasploitable2)
 image.  Modeled after TryHackMe's Wreath machine, the idea is to reach the
-third Metasploitable image, as shown in the topoglogy below.
+third Metasploitable image, as shown in the topoglogy below, which was made
+with [PlantUML](https://plantuml.com).
 
 ![chisel lab topology](topology.png)
 
